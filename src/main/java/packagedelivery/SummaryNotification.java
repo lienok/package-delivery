@@ -1,4 +1,4 @@
-package PackageDelivery;
+package packagedelivery;
 
 public class SummaryNotification implements Runnable {
 	

@@ -1,4 +1,4 @@
-package PackageDelivery;
+package packagedelivery;
 
 import java.util.Scanner;
 import java.util.concurrent.Executors;

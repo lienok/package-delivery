@@ -1,4 +1,4 @@
-package PackageDelivery;
+package packagedelivery;
 
 public class Package {
 	private double weight;

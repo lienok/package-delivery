@@ -1,4 +1,4 @@
-package PackageDelivery;
+package packagedelivery;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,9 @@ import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import packagedelivery.Package;
+import packagedelivery.PackageRepository;
 
 public class PackageRepositoryTest {
 

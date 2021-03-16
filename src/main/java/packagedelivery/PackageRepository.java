@@ -1,4 +1,4 @@
-package PackageDelivery;
+package packagedelivery;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;

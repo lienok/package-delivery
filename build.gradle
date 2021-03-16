@@ -9,6 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'java'
 }
 
 repositories {
@@ -28,4 +29,14 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest:2.2'
     testImplementation 'junit:junit:4.12'
     
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "packagedelivery.PackageDeliveryApp"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }

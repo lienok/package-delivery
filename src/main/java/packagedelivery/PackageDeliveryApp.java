@@ -1,15 +1,14 @@
 package packagedelivery;
 
 import java.util.Scanner;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class PackageDeliveryApp {
 
 	public static void main(String[] args) {
 
 		PackageDeliveryApp app = new PackageDeliveryApp();
+		System.out.println("--- !!! App WORK IN PROGRESS not working yet. ");
 		System.out.println("Please enter package info and press ENTER ");
 		String s = app.getInput();
 		

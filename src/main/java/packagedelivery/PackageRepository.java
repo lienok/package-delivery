@@ -1,30 +1,22 @@
 package packagedelivery;
 
-import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.function.Predicate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PackageRepository {
 
-	List<Package> packages = new CopyOnWriteArrayList<Package>();
+	Map<String, Double> packages = new HashMap<String, Double>();
 
-	public List<Package> getPackages() {
+	public Map<String, Double> getWeightsByPostalCode() {
 		return packages;
 	}
-
-	public synchronized Map<String, Double> getSummaryOfPackages() {
-		Map<String, Double> result = new HashMap<String, Double>(); // dont need concurent here save memory not to
-																	// create all the time new map
-
-		packages.stream().forEach((p) -> result.put(p.getPostalCode(), 
-				packages.stream().filter(this.packageWithPostalCode(p.getPostalCode()))
-				.mapToDouble(x -> x.getWeight())
-				.sum()));
-		return result;
+	
+	public synchronized void addPackage(Package p) { 
+		double currentWeight = 0;
+		if (this.getWeightsByPostalCode().containsKey(p.getPostalCode())) {
+			currentWeight = this.getWeightsByPostalCode().get(p.getPostalCode());
+		}
+		
+		this.getWeightsByPostalCode().put(p.getPostalCode(), currentWeight + p.getWeight());
 	}
-
-	private synchronized Predicate<Package> packageWithPostalCode(String postalCode) {
-		return p -> p.getPostalCode() == postalCode;
-	}
-
 }

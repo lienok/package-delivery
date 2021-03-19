@@ -17,23 +17,33 @@ public class PackageRepositoryTest {
 	@Before
 	public void init() {
 		repo = new PackageRepository();
-		//Prepare testing data
-		repo.getPackages().add(new Package(3.7, "02601"));
-		repo.getPackages().add(new Package(1.4, "02601"));
-		repo.getPackages().add(new Package(1.6, "01008"));
-		repo.getPackages().add(new Package(2.4, "01008"));
-
+	}
+	
+	
+	@Test
+	public void shouldSumUpWeightsForTheGivenPostalCode() {
+		repo.addPackage(new Package(3.4, "09809"));
+		repo.addPackage(new Package(3.4, "09809"));
+		
+		Map<String, Double> summary = repo.getWeightsByPostalCode();
+		double summaryOf02601 = 6.8;
+		
+		assertEquals(summaryOf02601, summary.get("09809").doubleValue(), 0.001);
 	}
 
 	@Test
 	public void shouldReturnSumOfWeightGroupedByPostalNumbers() {
-		Map<String, Double> summary = repo.getSummaryOfPackages();
-		double summaryOf02601 = 5.1;
-		double summaryOf01008 = 4;
+		repo.addPackage(new Package(3.7, "02601"));
+		repo.addPackage(new Package(1.4, "02601"));
+		repo.addPackage(new Package(1.6, "01008"));
+		repo.addPackage(new Package(2.4, "01008"));		
 		
-		assertEquals(summaryOf02601, summary.get("02601").doubleValue(), 0.001);
-		assertEquals(summaryOf01008, summary.get("01008").doubleValue(), 0.001);
+		Map<String, Double> summary = repo.getWeightsByPostalCode();
+		double sumOf02601 = 5.1;
+		double sumOf01008 = 4;
+		
+		assertEquals(sumOf01008, summary.get("01008").doubleValue(), 0.001);
+		assertEquals(sumOf02601, summary.get("02601").doubleValue(), 0.001);
 	}
-
 
 }

@@ -8,7 +8,7 @@
 
 plugins {
     // Apply the java-library plugin to add support for Java Library
-    id 'java-library'
+    id 'java-library'    
     id 'java'
 }
 
@@ -33,7 +33,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes "Main-Class": "packagedelivery.PackageDeliveryApp"
+        attributes "Main-Class": "packagedelivery.Application"
     }
 
     from {

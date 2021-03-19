@@ -26,6 +26,13 @@ gradle build
 java -jar build\libs\PackageDelivery.jar
 ```
 
+## Valid inputs
+User is expected to enter input in format:
+<weight: positive number, >0, maximal 3 decimal places, . (dot) as decimal separator><space><postal code: fixed 5 digits> 
+Sample: 3.4 08001
+Invalid formats are handle with the message in console. User is asked to read the manual, where the proper input should be described. (see above).
+Invalid formats are covered with unit tests.
+
 ## Tech
 PackageDelivery app uses
 

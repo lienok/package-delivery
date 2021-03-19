@@ -12,7 +12,7 @@ public class SummaryNotification extends TimerTask {
 	
 	@Override
 	public void run() {
-		System.out.println("\n Summary: ");
+		System.out.println("\nSummary: ");
 			
 		repo.getWeightsByPostalCode().forEach((postalCode, sum) -> System.out.print(String.format("%s: %.3f", postalCode, sum)));
 		System.out.println();
